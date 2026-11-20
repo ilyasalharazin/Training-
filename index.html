@@ -90,42 +90,6 @@ p {
 <div id="display">ا</div>
 
 <script>
-const alphabet = [
-'ا','ب','ت','ث','ج','ح','خ',
-'د','ذ','ر','ز','س','ش','ص',
-'ض','ط','ظ','ع','غ','ف','ق',
-'ك','ل','م','ن','ه','و','ي'
-];
-
-let selectedLetter = 'ا';
-let selectedMark = 'َ';
-
-const lettersBox = document.getElementById('letters');
-
-alphabet.forEach(letter => {
-    const item = document.createElement('div');
-    item.className = 'letter';
-    item.textContent = letter;
-
-    item.onclick = () => {
-        selectedLetter = letter;
-        updateDisplay();
-    };
-
-    lettersBox.appendChild(item);
-});
-
-function chooseMark(mark) {
-    selectedMark = mark;
-    updateDisplay();
-}
-
-function updateDisplay() {
-    document.getElementById('display').innerHTML =
-        `<span class="base">${selectedLetter}</span><span class="mark">${selectedMark}</span>`;
-}
-
-updateDisplay();
 </script>
 
 </body>
