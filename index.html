@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نتعلم العربية</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f0f7ff;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #1769aa;
+    font-size: 32px;
+}
+
+p {
+    font-size: 20px;
+}
+
+.letters {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    max-width: 600px;
+    margin: 25px auto;
+}
+
+.letter {
+    background: white;
+    border-radius: 15px;
+    padding: 18px 5px;
+    font-size: 48px;
+    color: #333;
+    box-shadow: 0 3px 8px #ccc;
+    cursor: pointer;
+}
+
+.letter:active {
+    background: #d9ecff;
+}
+
+.controls button {
+    font-size: 25px;
+    padding: 12px 22px;
+    margin: 8px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.fatha { background: #ffdddd; }
+.damma { background: #ddf0ff; }
+.kasra { background: #e5ffdf; }
+
+#display {
+    font-size: 100px;
+    margin: 25px;
+    color: #1769aa;
+    min-height: 130px;
+}
+
+#display .mark {
+    color: #e53935;
+}
+
+#display .base {
+    color: #1769aa;
+}
+</style>
+</head>
+<body>
+
+<h1>🌟 هيا نتعلم الحروف العربية 🌟</h1>
+<p>اختر حرفاً ثم اختر الحركة</p>
+
+<div class="letters" id="letters"></div>
+
+<div class="controls">
+    <button class="fatha" onclick="chooseMark('َ')">الفتحة َ</button>
+    <button class="damma" onclick="chooseMark('ُ')">الضمة ُ</button>
+    <button class="kasra" onclick="chooseMark('ِ')">الكسرة ِ</button>
+</div>
+
+<div id="display">ا</div>
+
+<script>
+const alphabet = [
+'ا','ب','ت','ث','ج','ح','خ',
+'د','ذ','ر','ز','س','ش','ص',
+'ض','ط','ظ','ع','غ','ف','ق',
+'ك','ل','م','ن','ه','و','ي'
+];
+
+let selectedLetter = 'ا';
+let selectedMark = 'َ';
+
+const lettersBox = document.getElementById('letters');
+
+alphabet.forEach(letter => {
+    const item = document.createElement('div');
+    item.className = 'letter';
+    item.textContent = letter;
+
+    item.onclick = () => {
+        selectedLetter = letter;
+        updateDisplay();
+    };
+
+    lettersBox.appendChild(item);
+});
+
+function chooseMark(mark) {
+    selectedMark = mark;
+    updateDisplay();
+}
+
+function updateDisplay() {
+    document.getElementById('display').innerHTML =
+        `<span class="base">${selectedLetter}</span><span class="mark">${selectedMark}</span>`;
+}
+
+updateDisplay();
+</script>
+
+</body>
+</html>
